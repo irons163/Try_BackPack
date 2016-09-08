@@ -54,8 +54,6 @@ public class Tool extends Layer implements Cloneable{
 	private boolean isOverlapable;
 	private IUseBehavior useBehavior;
 	
-
-	
 	public void setUseBehavior(IUseBehavior useBehavior){
 		this.useBehavior = useBehavior;
 	}
@@ -78,13 +76,6 @@ public class Tool extends Layer implements Cloneable{
 	}
 	
 	public Tool didMoveTool(){
-//		try {
-//			return (Tool) this.clone();
-//		} catch (CloneNotSupportedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			return null;
-//		}
 		return null;
 	}
 
@@ -102,17 +93,14 @@ public class Tool extends Layer implements Cloneable{
 	public void drawSelf(Canvas canvas, Paint paint) {
 		// TODO Auto-generated method stub
 		super.drawSelf(canvas, paint);
-		
-//		if(shadowUtil!=null)
-//			synchronized (shadowUtil) {
-//				shadowUtil.drawSelf(canvas, paint);
-//			}
 	}
 	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		if(shadowUtil!=null){
+			super.onTouchEvent(event);
+			
 			switch (event.getAction()) {
 			case MotionEvent.ACTION_UP:			
 			case MotionEvent.ACTION_CANCEL:
@@ -151,16 +139,11 @@ public class Tool extends Layer implements Cloneable{
 				break;
 			case MotionEvent.ACTION_UP:			
 			case MotionEvent.ACTION_CANCEL:
-				
 					if(shadowUtil!=null){
 						synchronized (shadowUtil) {
 							shadowUtil = null;
 						}
 					}
-						
-//				didMoveTool();
-//				if(toolCallback!=null)
-//					toolCallback.didMoveTool(this);
 				break;
 			case MotionEvent.ACTION_MOVE:
 

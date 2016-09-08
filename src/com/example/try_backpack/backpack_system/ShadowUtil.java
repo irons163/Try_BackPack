@@ -90,7 +90,7 @@ public class ShadowUtil extends ALayer{
 	}
 	
 	public void startDrag(){
-		layer.setTouching(false);
+//		layer.setTouching(false);
 	}
 	
 	public PointF getCenter(){
@@ -247,7 +247,8 @@ public class ShadowUtil extends ALayer{
 			shadowOffsetY = y - shadowTouchOffsetY;
 		}
 		
-		return true;
+//		return true;
+		return false;
 	}
 
 	@Override
