@@ -26,19 +26,19 @@ public class MyGameModel extends GameModel {
 		Tool tool = new ToolA(0, 0, false);
 //		tool.setzPosition(1);
 		LayerParam layerParam = new LayerParam();
-		layerParam.setEnabledPercentagePositionX(true);
-		layerParam.setEnabledPercentagePositionY(true);
-		layerParam.setPercentageX(0.5f);
-		layerParam.setPercentageY(0.5f);
+//		layerParam.setEnabledPercentagePositionX(true);
+//		layerParam.setEnabledPercentagePositionY(true);
+//		layerParam.setPercentageX(0.5f);
+//		layerParam.setPercentageY(0.5f);
 		tool.setLayerParam(layerParam);
-//		tool.setAnchorPoint(1, 1);
-		tool.setAnchorPoint(0.5f, 0.5f);
+		tool.setAnchorPoint(1, 1);
+//		tool.setAnchorPoint(0.5f, 0.5f);
 		tool.setBitmapAndAutoChangeWH(BitmapUtil.tool_BlackHole_bmp);
 		backpack.addTool(tool);
 		tool = new ToolB(0, 0, false);
 		tool.setLayerParam(layerParam);
-//		tool.setAnchorPoint(1, 1);
-		tool.setAnchorPoint(0.5f, 0.5f);
+		tool.setAnchorPoint(1, 1);
+//		tool.setAnchorPoint(0.5f, 0.5f);
 		tool.setBitmapAndAutoChangeWH(BitmapUtil.tool_BallSpeedUp_bmp);
 		backpack.addTool(tool);
 	}

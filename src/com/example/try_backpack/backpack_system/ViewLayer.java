@@ -2,7 +2,6 @@ package com.example.try_backpack.backpack_system;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 import android.content.Context;
 import android.graphics.Bitmap;
