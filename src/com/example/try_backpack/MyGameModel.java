@@ -54,9 +54,9 @@ public class MyGameModel extends GameModel {
 		// TODO Auto-generated method stub
 		super.doDraw(canvas);
 		
-		LayerManager.drawLayersForNegativeZOrder(canvas, null);
+		LayerManager.getInstance().drawLayersForNegativeZOrder(canvas, null);
 		backpack.drawSelf(canvas, null);
-		LayerManager.drawLayersForOppositeZOrder(canvas, null);
+		LayerManager.getInstance().drawLayersForOppositeZOrder(canvas, null);
 //		LayerManager.drawLayers(canvas, null);
 		if(moveToolDialogLayer!=null)
 		moveToolDialogLayer.drawSelf(canvas, null);
@@ -74,9 +74,9 @@ public class MyGameModel extends GameModel {
 //			moveToolDialogLayer.onTouchEvent(event);
 		
 //		backpack.onTouchEvent(event);
-		if(LayerManager.onTouchLayersForOppositeZOrder(event) 
+		if(LayerManager.getInstance().onTouchLayersForOppositeZOrder(event) 
 		|| backpack.onTouchEvent(event)
-		|| LayerManager.onTouchLayersForNegativeZOrder(event))
+		|| LayerManager.getInstance().onTouchLayersForNegativeZOrder(event))
 			;
 	}
 }
