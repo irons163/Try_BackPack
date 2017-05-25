@@ -75,7 +75,7 @@ public class ViewGroupLayer extends ALayer{
 	public void setInitWidth(int w) {
 		// TODO Auto-generated method stub
 		view.layout(view.getLeft(), view.getTop(), view.getLeft() + w, view.getTop());
-		this.centerX = view.getX() + w / 2;
+//		this.centerX = view.getX() + w / 2;
 	}
 
 	@Override
@@ -121,7 +121,7 @@ public class ViewGroupLayer extends ALayer{
 //		this.centerX = x + w/2;
 		view.setX(x);
 		if(isComposite() && getParent()!=null)
-			setLocationInScene(getParent().locationInSceneByCompositeLocation((float) (centerX - w / 2), (float) (centerY - h / 2)));
+			setLocationInScene(getParent().locationInSceneByCompositeLocation((float) (getCenterX() - getWidth() / 2), (float) (getCenterY() - getHeight() / 2)));
 	}
 
 	@Override
@@ -140,7 +140,7 @@ public class ViewGroupLayer extends ALayer{
 	@Override
 	public void setBitmapAndAutoChangeWH(Bitmap bitmap) {
 		// TODO Auto-generated method stub
-		this.bitmap = bitmap;
+		setBitmap(bitmap);
 		setInitWidth(bitmap.getWidth());
 		setInitHeight(bitmap.getHeight());
 	}
@@ -148,7 +148,7 @@ public class ViewGroupLayer extends ALayer{
 	@Override
 	public Bitmap getBitmap() {
 		// TODO Auto-generated method stub
-		return bitmap;
+		return getBitmap();
 	}
 
 	@Override
@@ -301,7 +301,7 @@ public class ViewGroupLayer extends ALayer{
 	}
 
 	@Override
-	protected void onTouched(MotionEvent event) {
+	public void onTouched(MotionEvent event) {
 		// TODO Auto-generated method stub
 		
 	}

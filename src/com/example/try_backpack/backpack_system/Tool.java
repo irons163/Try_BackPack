@@ -95,73 +95,73 @@ public class Tool extends Layer implements Cloneable{
 		super.drawSelf(canvas, paint);
 	}
 	
-	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-		// TODO Auto-generated method stub
-		if(shadowUtil!=null){
-			super.onTouchEvent(event);
+@Override
+public boolean onTouchEvent(MotionEvent event, int touchEventFlag) {
+	// TODO Auto-generated method stub
+	if(shadowUtil!=null){
+		super.onTouchEvent(event, touchEventFlag);
+		
+		switch (event.getAction()) {
+		case MotionEvent.ACTION_UP:			
+		case MotionEvent.ACTION_CANCEL:
 			
-			switch (event.getAction()) {
-			case MotionEvent.ACTION_UP:			
-			case MotionEvent.ACTION_CANCEL:
-				
-				didMoveTool();
-				if(toolCallback!=null)
-					toolCallback.didMoveTool(this,shadowUtil.getCenter().x,shadowUtil.getCenter().y);
-				
+			didMoveTool();
+			if(toolCallback!=null)
+				toolCallback.didMoveTool(this,shadowUtil.getCenter().x,shadowUtil.getCenter().y);
+			
+			if(shadowUtil!=null){
+				synchronized (shadowUtil) {
+					shadowUtil.removeFromAuto();
+					shadowUtil = null;
+				}
+			}
+			break;
+		case MotionEvent.ACTION_MOVE:
+
+			if(shadowUtil!=null){
+				synchronized (shadowUtil) {
+					shadowUtil.onTouchEvent(event, touchEventFlag);
+				}
+			}
+			
+			break;
+		default:
+			break;
+		}
+	}else if(super.onTouchEvent(event, touchEventFlag)){
+		
+		switch (event.getAction()) {
+		case MotionEvent.ACTION_DOWN:
+			if(toolCallback!=null)
+				toolCallback.touchedTool(this);
+			touchX = event.getX();
+			touchY = event.getY();
+			break;
+		case MotionEvent.ACTION_UP:			
+		case MotionEvent.ACTION_CANCEL:
 				if(shadowUtil!=null){
 					synchronized (shadowUtil) {
-						shadowUtil.removeFromAuto();
 						shadowUtil = null;
 					}
 				}
-				break;
-			case MotionEvent.ACTION_MOVE:
-	
+			break;
+		case MotionEvent.ACTION_MOVE:
+
 				if(shadowUtil!=null){
 					synchronized (shadowUtil) {
-						shadowUtil.onTouchEvent(event);
+						shadowUtil.onTouchEvent(event, touchEventFlag);
 					}
 				}
-				
-				break;
-			default:
-				break;
-			}
-		}else if(super.onTouchEvent(event)){
 			
-			switch (event.getAction()) {
-			case MotionEvent.ACTION_DOWN:
-				if(toolCallback!=null)
-					toolCallback.touchedTool(this);
-				touchX = event.getX();
-				touchY = event.getY();
-				break;
-			case MotionEvent.ACTION_UP:			
-			case MotionEvent.ACTION_CANCEL:
-					if(shadowUtil!=null){
-						synchronized (shadowUtil) {
-							shadowUtil = null;
-						}
-					}
-				break;
-			case MotionEvent.ACTION_MOVE:
-
-					if(shadowUtil!=null){
-						synchronized (shadowUtil) {
-							shadowUtil.onTouchEvent(event);
-						}
-					}
-				
-				break;
-			default:
-				break;
-			}
-			
-			return true;
+			break;
+		default:
+			break;
 		}
-		return false;
+		
+		return true;
 	}
+	return false;
+}
 	
 	@Override
 	public Object clone() throws CloneNotSupportedException {

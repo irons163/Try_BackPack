@@ -223,9 +223,9 @@ public class Backpack extends Layer{
 	}
 
 	@Override
-	public boolean onTouchEvent(MotionEvent event) {
+	public boolean onTouchEvent(MotionEvent event, int touchEventFlag) {
 		// TODO Auto-generated method stub
-		if(super.onTouchEvent(event)){
+		if(super.onTouchEvent(event, touchEventFlag)){
 			if(event.getAction()==MotionEvent.ACTION_DOWN){
 				if(backpackCallback!=null){
 					backpackCallback.isTouched();			

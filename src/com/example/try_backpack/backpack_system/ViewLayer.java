@@ -62,7 +62,7 @@ public class ViewLayer extends ALayer{
 	public void setInitWidth(int w) {
 		// TODO Auto-generated method stub
 		view.layout(view.getLeft(), view.getTop(), view.getLeft() + w, view.getTop());
-		this.centerX = view.getX() + w / 2;
+//		this.centerX = view.getX() + w / 2;
 	}
 
 	@Override
@@ -107,8 +107,8 @@ public class ViewLayer extends ALayer{
 //		this.x = x;
 //		this.centerX = x + w/2;
 		view.setX(x);
-		if(isComposite() && getParent()!=null)
-			setLocationInScene(getParent().locationInSceneByCompositeLocation((float) (centerX - w / 2), (float) (centerY - h / 2)));
+//		if(isComposite() && getParent()!=null)
+//			setLocationInScene(getParent().locationInSceneByCompositeLocation((float) (centerX - w / 2), (float) (centerY - h / 2)));
 	}
 
 	@Override
@@ -127,7 +127,7 @@ public class ViewLayer extends ALayer{
 	@Override
 	public void setBitmapAndAutoChangeWH(Bitmap bitmap) {
 		// TODO Auto-generated method stub
-		this.bitmap = bitmap;
+//		this.bitmap = bitmap;
 		setInitWidth(bitmap.getWidth());
 		setInitHeight(bitmap.getHeight());
 	}
@@ -135,7 +135,7 @@ public class ViewLayer extends ALayer{
 	@Override
 	public Bitmap getBitmap() {
 		// TODO Auto-generated method stub
-		return bitmap;
+		return getBitmap();
 	}
 
 	@Override
@@ -282,7 +282,7 @@ public class ViewLayer extends ALayer{
 	}
 
 	@Override
-	protected void onTouched(MotionEvent event) {
+	public void onTouched(MotionEvent event) {
 		// TODO Auto-generated method stub
 		
 	}

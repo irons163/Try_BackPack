@@ -234,7 +234,8 @@ public class ShadowUtil extends ALayer{
 	}
 	
 	@Override
-	public boolean onTouchEvent(MotionEvent event) {
+	public boolean onTouchEvent(MotionEvent event, int touchEventFlag) {
+		// TODO Auto-generated method stub
 		final float x = event.getX();
 		final float y = event.getY();
 		
@@ -252,7 +253,7 @@ public class ShadowUtil extends ALayer{
 	}
 
 	@Override
-	protected void onTouched(MotionEvent event) {
+	public void onTouched(MotionEvent event) {
 		// TODO Auto-generated method stub
 		
 	}

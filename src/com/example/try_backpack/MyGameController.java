@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.SurfaceHolder;
 
 import com.example.try_gameengine.framework.GameController;
+import com.example.try_gameengine.framework.GameView;
 import com.example.try_gameengine.framework.IGameModel;
 
 public class MyGameController extends GameController{
@@ -23,9 +24,9 @@ public class MyGameController extends GameController{
 	}
 
 	@Override
-	protected void initGameView(Activity activity, IGameModel gameModel) {
+	protected GameView initGameView(Activity activity, IGameModel gameModel) {
 		// TODO Auto-generated method stub
-		gameView = new MyGameView(activity, this, gameModel);
+		return gameView = new MyGameView(activity, this, gameModel);
 	}
 
 	@Override
